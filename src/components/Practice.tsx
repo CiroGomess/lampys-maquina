@@ -1,6 +1,9 @@
 
 import { Play, DollarSign, Clock, Bell, LucideIcon } from 'lucide-react';
 
+import videoDemo from '../assets/vd/maquina_tempo_microondas.mp4';
+
+
 type BenefitColor = 'green' | 'blue' | 'purple';
 
 interface Benefit {
@@ -44,7 +47,7 @@ const Practice = () => {
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-gray-900 mb-6">Na Prática</h2>
           <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed mb-12">
-            Veja a máquina do tempo em uma aplicação prática para ilustrar o conceito e 
+            Veja a máquina do tempo em uma aplicação prática para ilustrar o conceito e
             entender melhor como ela funciona e os benefícios que pode trazer.
           </p>
         </div>
@@ -52,15 +55,12 @@ const Practice = () => {
         {/* Video Demo Section */}
         <div className="max-w-4xl mx-auto mb-16">
           <div className="bg-gradient-to-r from-blue-600 to-teal-600 rounded-3xl p-8 shadow-2xl">
-            <div className="bg-black rounded-2xl aspect-video flex items-center justify-center group cursor-pointer hover:bg-gray-900 transition-colors duration-300">
-              <div className="text-center">
-                <div className="w-20 h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <Play className="w-10 h-10 text-white ml-1" />
-                </div>
-                <h3 className="text-xl font-semibold text-white mb-2">Demonstração Prática</h3>
-                <p className="text-blue-100">Clique para ver a Máquina do Tempo em ação</p>
-              </div>
-            </div>
+            <video
+              src={videoDemo}
+              controls
+              className="rounded-2xl w-full aspect-video bg-black"
+            />
+
           </div>
         </div>
 
