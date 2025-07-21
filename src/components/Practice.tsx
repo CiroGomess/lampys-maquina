@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Play, DollarSign, Clock, Bell, LucideIcon } from 'lucide-react';
 
 type BenefitColor = 'green' | 'blue' | 'purple';
