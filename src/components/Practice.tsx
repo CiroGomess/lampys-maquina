@@ -1,8 +1,17 @@
 import React from 'react';
-import { Play, DollarSign, Clock, Bell } from 'lucide-react';
+import { Play, DollarSign, Clock, Bell, LucideIcon } from 'lucide-react';
+
+type BenefitColor = 'green' | 'blue' | 'purple';
+
+interface Benefit {
+  icon: LucideIcon;
+  title: string;
+  description: string;
+  color: BenefitColor;
+}
 
 const Practice = () => {
-  const benefits = [
+  const benefits: Benefit[] = [
     {
       icon: DollarSign,
       title: 'Pagamento Imediato',
@@ -23,7 +32,7 @@ const Practice = () => {
     }
   ];
 
-  const colorClasses = {
+  const colorClasses: Record<BenefitColor, string> = {
     green: 'from-green-50 to-emerald-50 bg-green-100 text-green-600',
     blue: 'from-blue-50 to-sky-50 bg-blue-100 text-blue-600',
     purple: 'from-purple-50 to-violet-50 bg-purple-100 text-purple-600'
@@ -57,18 +66,22 @@ const Practice = () => {
 
         {/* Benefits Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {benefits.map((benefit, index) => (
-            <div
-              key={index}
-              className={`bg-gradient-to-br ${colorClasses[benefit.color].split(' ')[0]} ${colorClasses[benefit.color].split(' ')[1]} rounded-2xl p-8 text-center group hover:shadow-lg transition-all duration-300`}
-            >
-              <div className={`w-16 h-16 ${colorClasses[benefit.color].split(' ')[2]} rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                <benefit.icon className={`w-8 h-8 ${colorClasses[benefit.color].split(' ')[3]}`} />
+          {benefits.map((benefit, index) => {
+            const [from, to, bg, text] = colorClasses[benefit.color].split(' ');
+
+            return (
+              <div
+                key={index}
+                className={`bg-gradient-to-br ${from} ${to} rounded-2xl p-8 text-center group hover:shadow-lg transition-all duration-300`}
+              >
+                <div className={`w-16 h-16 ${bg} rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                  <benefit.icon className={`w-8 h-8 ${text}`} />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">{benefit.title}</h3>
+                <p className="text-gray-600 leading-relaxed">{benefit.description}</p>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">{benefit.title}</h3>
-              <p className="text-gray-600 leading-relaxed">{benefit.description}</p>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* Call to Action */}

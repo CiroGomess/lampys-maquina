@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { ShoppingCart, Gift, Zap } from 'lucide-react';
 
 const PurchaseDevice = () => {

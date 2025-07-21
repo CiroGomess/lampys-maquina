@@ -1,41 +1,47 @@
+import { QrCode, Smartphone, CreditCard, Play, LucideIcon } from 'lucide-react';
 
-import { QrCode, Smartphone, CreditCard, Play } from 'lucide-react';
+type StepColor = 'blue' | 'teal' | 'green' | 'purple';
+
+const colorClasses: Record<StepColor, string> = {
+  blue: 'bg-blue-50 text-blue-600 border-blue-200',
+  teal: 'bg-teal-50 text-teal-600 border-teal-200',
+  green: 'bg-green-50 text-green-600 border-green-200',
+  purple: 'bg-purple-50 text-purple-600 border-purple-200'
+};
+
+const steps: {
+  icon: LucideIcon;
+  title: string;
+  description: string;
+  color: StepColor;
+}[] = [
+  {
+    icon: QrCode,
+    title: 'Escaneie o QR Code',
+    description: 'Cliente escaneia o código na máquina',
+    color: 'blue'
+  },
+  {
+    icon: Smartphone,
+    title: 'Acesse o Sistema',
+    description: 'Abertura automática do aplicativo/web',
+    color: 'teal'
+  },
+  {
+    icon: CreditCard,
+    title: 'Faça o Pagamento',
+    description: 'Escolha o tempo e pague de forma segura',
+    color: 'green'
+  },
+  {
+    icon: Play,
+    title: 'Equipamento Ativado',
+    description: 'Máquina liberada automaticamente',
+    color: 'purple'
+  }
+];
 
 const HowItWorks = () => {
-  const steps = [
-    {
-      icon: QrCode,
-      title: 'Escaneie o QR Code',
-      description: 'Cliente escaneia o código na máquina',
-      color: 'blue'
-    },
-    {
-      icon: Smartphone,
-      title: 'Acesse o Sistema',
-      description: 'Abertura automática do aplicativo/web',
-      color: 'teal'
-    },
-    {
-      icon: CreditCard,
-      title: 'Faça o Pagamento',
-      description: 'Escolha o tempo e pague de forma segura',
-      color: 'green'
-    },
-    {
-      icon: Play,
-      title: 'Equipamento Ativado',
-      description: 'Máquina liberada automaticamente',
-      color: 'purple'
-    }
-  ];
-
-  const colorClasses = {
-    blue: 'bg-blue-50 text-blue-600 border-blue-200',
-    teal: 'bg-teal-50 text-teal-600 border-teal-200',
-    green: 'bg-green-50 text-green-600 border-green-200',
-    purple: 'bg-purple-50 text-purple-600 border-purple-200'
-  };
-
   return (
     <section id="funcionamento" className="py-20 bg-gray-50">
       <div className="container mx-auto px-4">
@@ -56,9 +62,6 @@ const HowItWorks = () => {
               <div key={index} className="relative">
                 {/* Step Card */}
                 <div className="bg-white rounded-2xl p-8 shadow-lg border-2 border-gray-100 hover:shadow-xl hover:border-blue-300 transition-all duration-300 group cursor-pointer">
-        
-                
-
                   {/* Icon */}
                   <div className={`w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 border-2 group-hover:scale-110 transition-transform duration-300 ${colorClasses[step.color]}`}>
                     <step.icon className="w-8 h-8" />

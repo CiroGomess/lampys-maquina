@@ -1,8 +1,19 @@
-
 import { Check, Star, Zap } from 'lucide-react';
 
+type PlanColor = 'gray' | 'blue' | 'purple';
+
+interface Plan {
+  name: string;
+  price: string;
+  period: string;
+  description: string;
+  features: string[];
+  color: PlanColor;
+  popular: boolean;
+}
+
 const Plans = () => {
-  const plans = [
+  const plans: Plan[] = [
     {
       name: 'TESTE',
       price: 'Grátis',
@@ -50,32 +61,32 @@ const Plans = () => {
     }
   ];
 
-  const getColorClasses = (color: string, popular: boolean) => {
-    const colors = {
+  const getColorClasses = (color: PlanColor, popular: boolean) => {
+    const colors: Record<PlanColor, string> = {
       gray: 'border-gray-200 bg-white',
       blue: 'border-blue-300 bg-blue-50',
       purple: 'border-purple-300 bg-purple-50'
     };
-    
+
     if (popular) {
       return 'border-blue-500 bg-gradient-to-br from-blue-50 to-teal-50 shadow-xl scale-105';
     }
-    
-    return colors[color] || colors.gray;
+
+    return colors[color];
   };
 
-  const getButtonClasses = (color: string, popular: boolean) => {
+  const getButtonClasses = (color: PlanColor, popular: boolean) => {
     if (popular) {
       return 'bg-gradient-to-r from-blue-600 to-teal-600 text-white hover:from-blue-700 hover:to-teal-700';
     }
-    
-    const colors = {
+
+    const colors: Record<PlanColor, string> = {
       gray: 'bg-gray-600 text-white hover:bg-gray-700',
       blue: 'bg-blue-600 text-white hover:bg-blue-700',
       purple: 'bg-purple-600 text-white hover:bg-purple-700'
     };
-    
-    return colors[color] || colors.gray;
+
+    return colors[color];
   };
 
   return (
